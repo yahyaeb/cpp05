@@ -6,13 +6,15 @@
 #    By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/30 16:05:46 by yel-bouk          #+#    #+#              #
-#    Updated: 2025/08/30 12:37:41 by yel-bouk         ###   ########.fr        #
+#    Updated: 2025/08/31 14:44:12 by yel-bouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Bureaucrat
 CC = c++
-SRCS = Bureaucrat.cpp
+SRCS = Bureaucrat.cpp \
+		Form.cpp \
+		main.cpp
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
