@@ -6,11 +6,15 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 12:41:54 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/08/31 12:34:35 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/04 14:33:43 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include "AForm.hpp"
+
+
+class AForm;
 
 class Bureaucrat
 {
@@ -19,7 +23,6 @@ class Bureaucrat
 		int _grade;
 
 	public:
-	//constrcutor
 	Bureaucrat();
 	Bureaucrat(const std::string& name, int grade);
 	Bureaucrat(const Bureaucrat& other);
@@ -30,6 +33,7 @@ class Bureaucrat
 	int		getGrade(void) const;
 	void	incrementGrade(void);
 	void	decrementGrade(void);
+	void	signForm(AForm &form);
 
 	class GradeTooHighException : public std::exception
 	{
