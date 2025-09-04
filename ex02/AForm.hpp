@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 12:29:43 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/09/04 14:31:28 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:43:51 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@ class Bureaucrat;
 
 class AForm
 {
-	private:
-		const std::string	_name;
-		const int			_gradetoSign;
-		const int			_gradetoExecute;
-		bool				_isSigned;
-		virtual void		performAction() const = 0;
+	protected:
+		const std::string   _name;
+		const int           _gradetoSign;
+		const int           _gradetoExecute;
+		bool                _isSigned;
+		const std::string   _target;
+		virtual void performAction() const = 0;
 	public:
 		AForm();
-		AForm(const std::string& name, int gradetoSign, int gradetoExecute);
+		AForm(const std::string& name, int gradetoSign, int gradetoExecute, const std::string& target);
 		AForm(const AForm& other);
 		AForm& operator=(const AForm& other);
 		~AForm();
@@ -57,17 +58,20 @@ class AForm
 			{
 				return "Form is not signed";
 			}
-	}
+	};
 
-	const	std::string& getName() const;
-	bool	getIsSigned() const;
-	int		getGradeToSign() const;
-	int		getGradeToExecute() const;
-	void	beSigned(const Bureaucrat &b);
-	void	execute(const Bureaucrat &executor) const;
+	// Getters
+    const std::string& getName() const;
+    bool getIsSigned() const;
+    int getGradeToSign() const;
+    int getGradeToExecute() const;
+    const std::string& getTarget() const;
+
+	// Business logic
+	void beSigned(const Bureaucrat& b);
+	void execute(const Bureaucrat& executor) const;
 	
-	
-	friend std::ostream& operator<<(std::ostream& os, const Form& form);
+	friend std::ostream& operator<<(std::ostream& os, const AForm& form);
 };
 
 #endif

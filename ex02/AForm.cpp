@@ -6,11 +6,11 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:14:24 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/09/04 13:44:07 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:44:33 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 AForm::AForm()
@@ -20,12 +20,20 @@ AForm::AForm()
 	std::cout << "AForm constructor called." << std::endl;
 }
 
-AForm::AForm(const std::string& name, int gradetoSign, int gradetoExecute)
-	: _name(name), _gradetoSign(gradetoSign), _gradetoExecute(gradetoExecute), _isSigned(false)
+AForm::AForm(const std::string& name, int gradetoSign, int gradetoExecute, const std::string& target)
+    : _name(name),
+	_gradetoSign(gradetoSign),
+	_gradetoExecute(gradetoExecute),
+	_isSigned(false),
+	_target(target)
 {}
 
+
 AForm::AForm(const AForm& other)
-	: _name(other._name), _gradetoSign(other._gradetoSign), _gradetoExecute(other._gradetoExecute), _isSigned(other._isSigned)
+	: _name(other._name),
+	_gradetoSign(other._gradetoSign),
+	_gradetoExecute(other._gradetoExecute),
+	_isSigned(other._isSigned)
 {}
 AForm& AForm::operator=(const AForm& other)
 {
@@ -34,6 +42,11 @@ AForm& AForm::operator=(const AForm& other)
 		_isSigned = other._isSigned;
 	}
 	return *this;
+}
+
+const std::string& AForm::getTarget() const
+{
+    return _target;
 }
 
 AForm::~AForm()
@@ -63,6 +76,8 @@ int	AForm::getGradeToExecute() const
 
 void AForm::beSigned(const Bureaucrat &b)
 {
+	if(_isSigned == true)
+		return ;
 	if (b.getGrade() <= _gradetoSign)
 		_isSigned = true;
 	else
@@ -82,10 +97,12 @@ void AForm::execute(const Bureaucrat &executor) const
 std::ostream &operator<<(std::ostream &os,  AForm const &Aform)
 {
 	os << "Name: " << Aform.getName()
+	<< " Target: " << Aform.getTarget()
 	<< " isSigned: " << Aform.getIsSigned()
 	<< " SignGrade: " << Aform.getGradeToSign()
 	<< " ExecuteGrade: " << Aform.getGradeToExecute()
 	<< std::endl;
+
 
 	return (os);
 }

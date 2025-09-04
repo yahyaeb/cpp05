@@ -6,21 +6,22 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:10:50 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/09/04 16:47:57 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/04 17:25:36 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream.io>
+#include <iostream>
 #include <string>
+#include "AForm.hpp"
 
-class ShrubberyCreationForm
+
+class ShrubberyCreationForm : public AForm
 {	
-	private:
-		std::string _target;
-		virtual void	performAction() const;
+	protected:
+		void performAction() const;
 	public:
 		ShrubberyCreationForm();
-		ShrubberyCreationForm(int _grade, int _exec);
+		ShrubberyCreationForm(const std::string& target);
 		ShrubberyCreationForm(const ShrubberyCreationForm& other);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 		~ShrubberyCreationForm();

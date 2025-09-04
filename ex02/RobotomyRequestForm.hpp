@@ -6,30 +6,27 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:10:44 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/09/04 16:51:47 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/04 17:23:16 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream.io>
+#include <iostream>
+#include "AForm.hpp"
 #include <string>
 
-class RobotomyRequestForm
+class RobotomyRequestForm : public AForm
 {
-	private:
-		int _grade;
-		int _exec;
+	protected:
+		void performAction() const;
 	public:
-		RobotomyRequestForm();
-		RobotomyRequestForm(int _grade, int _exec);
+		RobotomyRequestForm(const std::string& target);
 		RobotomyRequestForm(const RobotomyRequestForm& other);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
-		~RobotomyRequestForm();
+		virtual ~RobotomyRequestForm();
 
-			
 		class RobotizationFail : std::exception
 		{
 			public:
 				virtual const char *what() const throw();
 		};
-		
-}
+};

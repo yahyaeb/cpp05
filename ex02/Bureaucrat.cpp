@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 12:41:51 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/09/04 14:34:10 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:55:13 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,3 +69,15 @@ void Bureaucrat::signForm(AForm &form)
 {
 	form.beSigned(*this);
 }
+
+void Bureaucrat::executeForm(AForm const& form) const
+{
+    try {
+        form.execute(*this);
+        std::cout << _name << " executed " << form.getName() << std::endl;
+    } catch (std::exception& e) {
+        std::cout << _name << " couldn't execute " << form.getName()
+                  << " because " << e.what() << std::endl;
+    }
+}
+

@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 12:41:54 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/09/04 14:33:43 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:55:10 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class Bureaucrat
 	void	incrementGrade(void);
 	void	decrementGrade(void);
 	void	signForm(AForm &form);
+	void executeForm(AForm const& form) const;
 
 	class GradeTooHighException : public std::exception
 	{
