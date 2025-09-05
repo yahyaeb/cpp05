@@ -6,7 +6,7 @@
 #    By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/30 16:05:46 by yel-bouk          #+#    #+#              #
-#    Updated: 2025/09/05 12:47:49 by yel-bouk         ###   ########.fr        #
+#    Updated: 2025/09/05 16:15:02 by yel-bouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS = Bureaucrat.cpp \
 		PresidentialPardonForm.cpp \
 		RobotomyRequestForm.cpp \
 		ShrubberyCreationForm.cpp \
+		Intern.cpp \
 		main.cpp
 
 CFLAGS = -g -Wall -Wextra -Werror -std=c++98

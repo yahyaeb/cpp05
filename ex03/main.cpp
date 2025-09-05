@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 14:44:20 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/09/05 15:36:29 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:42:59 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main(void)
 {
@@ -51,6 +52,34 @@ int main(void)
 	Mr_President.executeForm(President_form);
 	Mr_President.signForm(President_form);
 	Mr_President.executeForm(President_form);
-	
+
+
+	std::cout << "\033[33m" << std::endl << "Test ex03 Intern" << "\033[0m" << std::endl;
+	Intern Jr_Intern;
+	AForm *robo_intern;
+
+	robo_intern = Jr_Intern.makeForm("DoYouKnowMe", "Hmmmm");
+	if (robo_intern)
+	{
+		std::cout << robo_intern->getName() << std::endl;
+		delete robo_intern;
+	}
+	else
+	{
+		std::cout << "Form creation failed." << std::endl;
+	}
+
+	robo_intern = Jr_Intern.makeForm("RobotomyRequestForm", "World");
+	if (robo_intern)
+	{
+		std::cout << robo_intern->getName() << std::endl;
+		delete robo_intern;
+	}
+	else
+	{
+		std::cout << "Form creation failed." << std::endl;
+	}
+
 	return (0);
+
 }
