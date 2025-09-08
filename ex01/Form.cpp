@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:14:24 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/08/31 15:27:08 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:33:36 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Form::Form()
 	: _name("Default"), _gradetoSign(1), _gradetoExecute(1), _isSigned(false)
 
 {
-	std::cout << "Form constructor called." << std::endl;
+	// std::cout << "Form constructor called." << std::endl;
 }
 
 Form::Form(const std::string& name, int gradetoSign, int gradetoExecute)
@@ -38,7 +38,7 @@ Form& Form::operator=(const Form& other)
 
 Form::~Form()
 {
-	std::cout << "Form destructor called." << std::endl;
+	// std::cout << "Form destructor called." << std::endl;
 }
 
 const std::string& Form::getName() const
@@ -63,6 +63,8 @@ int	Form::getGradeToExecute() const
 
 void Form::beSigned(const Bureaucrat &b)
 {
+	if(_isSigned)
+		throw AlreadySigned();
     if (b.getGrade() <= _gradetoSign)
         _isSigned = true;
     else

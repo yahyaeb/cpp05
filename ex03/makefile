@@ -6,7 +6,7 @@
 #    By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/30 16:05:46 by yel-bouk          #+#    #+#              #
-#    Updated: 2025/09/05 16:15:02 by yel-bouk         ###   ########.fr        #
+#    Updated: 2025/09/08 13:17:00 by yel-bouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,13 @@ SRCS = Bureaucrat.cpp \
 		main.cpp
 
 CFLAGS = -g -Wall -Wextra -Werror -std=c++98
-LDFLAGS = -fsanitize=address
+# LDFLAGS = -fsanitize=address
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 14:44:20 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/09/05 15:36:29 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/06 15:26:04 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,60 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include <fstream>
 
-int main(void)
+
+int main()
 {
-	// srand(time(NULL));
+    // ShrubberyCreationForm test
+    std::cout << "\n=== ShrubberyCreationForm Test ===\n";
+    Bureaucrat gardener("Gardener", 130);
+    ShrubberyCreationForm garden("home");
+    std::cout << garden << std::endl;
+
+    gardener.executeForm(garden); // Should fail: not signed yet
+    gardener.signForm(garden);    // Should succeed
+    gardener.executeForm(garden); // Should succeed
+
+    // RobotomyRequestForm test
+    std::cout << "\n=== RobotomyRequestForm Test ===\n";
+    Bureaucrat robotTech("Tech", 45);
+    RobotomyRequestForm robot("Bender");
+    std::cout << robot << std::endl;
+
+    robotTech.executeForm(robot); // Should fail: not signed yet
+    robotTech.signForm(robot);    // Should succeed
+    robotTech.executeForm(robot); // Should succeed (random result)
+    robotTech.executeForm(robot); // Should succeed (random result)
+
+    // PresidentialPardonForm test
+    std::cout << "\n=== PresidentialPardonForm Test ===\n";
+    Bureaucrat president("President", 1);
+    PresidentialPardonForm pardon("Marvin");
+    std::cout << pardon << std::endl;
+
+    president.executeForm(pardon); // Should fail: not signed yet
+    president.signForm(pardon);    // Should succeed
+    president.executeForm(pardon); // Should succeed
 
 
-	std::cout << "\033[33m" << std::endl << "Test ex02" << "\033[0m" << std::endl;
+    // Try with someone who can't sign/execute
+    std::cout << "\n=== Too Low Grade Test ===\n";
+    Bureaucrat intern("Intern", 150);
+	ShrubberyCreationForm testo("testo");
+	intern.signForm(garden);
+    intern.signForm(testo);       // Should fail
+    intern.executeForm(testo);    // Should fail
 
-	std::cout << "\033[33m" << std::endl << "Test ex02 ShrubberyCreationForm" << "\033[0m" << std::endl;
-	Bureaucrat Mr_Shrubby("Mr_Shrubby", 130);
-	ShrubberyCreationForm Shrubby_form("Hello");
-	std::cout << std::endl;
-	std::cout << Shrubby_form;
-	Mr_Shrubby.signForm(Shrubby_form);
-	std::cout << Shrubby_form;
-	Mr_Shrubby.executeForm(Shrubby_form);
+	std::ifstream infile((garden.getTarget() + "_shrubbery").c_str());
+	if (infile) {
+		std::cout << "\nFile '" << garden.getTarget() << "_shrubbery' was created. Contents:\n";
+		std::cout << infile.rdbuf() << std::endl;
+	} else {
+		std::cout << "File was NOT created!" << std::endl;
+	}
 
-	std::cout << "\033[33m" << std::endl << "Test ex02 RobotomyRequestForm" << "\033[0m" << std::endl;
-	RobotomyRequestForm Robo_form("I am a robo form");
-	Bureaucrat Mr_Robo("Mr_Robo", 45);
 
-	Mr_Robo.executeForm(Robo_form);
-	Mr_Robo.signForm(Robo_form);
-	Mr_Robo.executeForm(Robo_form);
-	Mr_Robo.executeForm(Robo_form);
-	Mr_Robo.executeForm(Robo_form);
 
-	std::cout << "\033[33m" << std::endl << "Test ex02 PresidentialPardonForm" << "\033[0m" << std::endl;
-	PresidentialPardonForm President_form("I am a robo form");
-	Bureaucrat Mr_President("Mr_President", 5);
-
-	Mr_Robo.executeForm(President_form);
-	Mr_Robo.signForm(President_form);
-
-	Mr_President.executeForm(President_form);
-	Mr_President.signForm(President_form);
-	Mr_President.executeForm(President_form);
-	
-	return (0);
+    return 0;
 }

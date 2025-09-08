@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 12:41:51 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/08/31 15:16:18 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:25:56 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Bureaucrat::Bureaucrat()
 {
-	std::cout << " Bureaucrat constructor called! " << std::endl;
+	// std::cout << " Bureaucrat constructor called! " << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name) , _grade(grade)
@@ -23,7 +23,7 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name) , _grad
 		throw GradeTooHighException();
 	else if(grade > 150)
 		throw GradeTooLowException();
-	std::cout << "Name and grade constructor called." << std::endl;
+	// std::cout << "Name and grade constructor called." << std::endl;
 }
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade)
 {}
@@ -37,7 +37,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << " Bureaucrat destructor called! " << std::endl;
+	// std::cout << "Bureaucrat destructor called! " << std::endl;
 }
 
 void	Bureaucrat::incrementGrade(void)
@@ -67,8 +67,17 @@ int Bureaucrat::getGrade(void) const
 
 void Bureaucrat::signForm(Form &form)
 {
-	form.beSigned(*this);
+	try {
+		form.beSigned(*this);
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	}
+	catch (const std::exception& e) {
+		std::cout << this->getName()
+				  << " couldn’t sign " << form.getName()
+				  << " because " << e.what() << std::endl;
+	}
 }
+
 
 
 // int main()

@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 14:44:20 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/09/05 16:42:59 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/06 15:37:14 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,70 +16,58 @@
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
 
-int main(void)
+int main()
 {
-	// srand(time(NULL));
+    std::cout << "\n=== Intern and makeForm() TESTS ===\n" << std::endl;
 
+    Bureaucrat shrubGuy("Shrubber", 130);
+    Bureaucrat roboGuy("Roboteer", 45);
+    Bureaucrat presGuy("President", 1);
 
-	std::cout << "\033[33m" << std::endl << "Test ex02" << "\033[0m" << std::endl;
+    Intern someRandomIntern;
+    AForm *form;
 
-	std::cout << "\033[33m" << std::endl << "Test ex02 ShrubberyCreationForm" << "\033[0m" << std::endl;
-	Bureaucrat Mr_Shrubby("Mr_Shrubby", 130);
-	ShrubberyCreationForm Shrubby_form("Hello");
-	std::cout << std::endl;
-	std::cout << Shrubby_form;
-	Mr_Shrubby.signForm(Shrubby_form);
-	std::cout << Shrubby_form;
-	Mr_Shrubby.executeForm(Shrubby_form);
+    // 1. Try to make an unknown form
+    std::cout << "[Test] Unknown form type:" << std::endl;
+    form = someRandomIntern.makeForm("unknown form", "Nobody");
+    if (!form)
+        std::cout << "Returned NULL as expected for unknown form.\n" << std::endl;
+    else
+        delete form;
 
-	std::cout << "\033[33m" << std::endl << "Test ex02 RobotomyRequestForm" << "\033[0m" << std::endl;
-	RobotomyRequestForm Robo_form("I am a robo form");
-	Bureaucrat Mr_Robo("Mr_Robo", 45);
+    // 2. ShrubberyCreationForm
+    std::cout << "[Test] ShrubberyCreationForm:" << std::endl;
+    form = someRandomIntern.makeForm("shrubbery creation", "forest");
+    if (form)
+    {
+        std::cout << *form << std::endl;
+        shrubGuy.signForm(*form);
+        shrubGuy.executeForm(*form);
+        delete form;
+    }
 
-	Mr_Robo.executeForm(Robo_form);
-	Mr_Robo.signForm(Robo_form);
-	Mr_Robo.executeForm(Robo_form);
-	Mr_Robo.executeForm(Robo_form);
-	Mr_Robo.executeForm(Robo_form);
+    // 3. RobotomyRequestForm
+    std::cout << "[Test] RobotomyRequestForm:" << std::endl;
+    form = someRandomIntern.makeForm("robotomy request", "Bender");
+    if (form)
+    {
+        std::cout << *form << std::endl;
+        roboGuy.signForm(*form);
+        roboGuy.executeForm(*form);
+        delete form;
+    }
 
-	std::cout << "\033[33m" << std::endl << "Test ex02 PresidentialPardonForm" << "\033[0m" << std::endl;
-	PresidentialPardonForm President_form("I am a robo form");
-	Bureaucrat Mr_President("Mr_President", 5);
+    // 4. PresidentialPardonForm
+    std::cout << "[Test] PresidentialPardonForm:" << std::endl;
+    form = someRandomIntern.makeForm("presidential pardon", "Ford Prefect");
+    if (form)
+    {
+        std::cout << *form << std::endl;
+        presGuy.signForm(*form);
+        presGuy.executeForm(*form);
+        delete form;
+    }
 
-	Mr_Robo.executeForm(President_form);
-	Mr_Robo.signForm(President_form);
-
-	Mr_President.executeForm(President_form);
-	Mr_President.signForm(President_form);
-	Mr_President.executeForm(President_form);
-
-
-	std::cout << "\033[33m" << std::endl << "Test ex03 Intern" << "\033[0m" << std::endl;
-	Intern Jr_Intern;
-	AForm *robo_intern;
-
-	robo_intern = Jr_Intern.makeForm("DoYouKnowMe", "Hmmmm");
-	if (robo_intern)
-	{
-		std::cout << robo_intern->getName() << std::endl;
-		delete robo_intern;
-	}
-	else
-	{
-		std::cout << "Form creation failed." << std::endl;
-	}
-
-	robo_intern = Jr_Intern.makeForm("RobotomyRequestForm", "World");
-	if (robo_intern)
-	{
-		std::cout << robo_intern->getName() << std::endl;
-		delete robo_intern;
-	}
-	else
-	{
-		std::cout << "Form creation failed." << std::endl;
-	}
-
-	return (0);
-
+    std::cout << "\n=== End of tests ===\n" << std::endl;
+    return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 12:41:51 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/09/05 15:36:18 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/06 12:52:34 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 
 Bureaucrat::~Bureaucrat()
 {
-	// std::cout << " Bureaucrat destructor called! " << std::endl;
+	// std::cout << "Bureaucrat destructor called! " << std::endl;
 }
 
 void	Bureaucrat::incrementGrade(void)

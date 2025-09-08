@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 12:41:51 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/08/30 15:47:19 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:04:12 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << " Bureaucrat destructor called! " << std::endl;
+	std::cout << "Bureaucrat destructor called! " << std::endl;
 }
 
 void	Bureaucrat::incrementGrade(void)
@@ -67,61 +67,31 @@ int Bureaucrat::getGrade(void) const
 
 int main()
 {
-	// try
-	// {
-	// 	Bureaucrat test("Yahya", 148);
-	// 	std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
-	// 	std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
-	// 	test.decrementGrade();
-	// 	std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
-	// 	std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
-	// 	test.decrementGrade();
-	// 	std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
-	// 	std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
-	// 	test.incrementGrade();
-	// 	std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
-	// 	std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
-	// 	int i = 160;
-	// 	while(i > 1 )
-	// 	{
-	// 		test.incrementGrade();
-	// 		if(i == 1)
-	// 		{
-	// 			std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
-	// 			std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
-	// 		}
-	// 		i++;
-	// 	}
-	// 	std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
-	// 	std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
-	// }
-	// catch(const std::exception &e)
-	// {
-	// 	std::cerr << "Exception caught: " << e.what() << std::endl;
-	// }
 	try
 	{
-		Bureaucrat test("Yahya", 1);
+		Bureaucrat test("DS-160", 5);
 		std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
 		std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
+		std::cout << "then we increment twice => " << "\n"<< std::endl;
 		test.incrementGrade();
 		test.incrementGrade();
 		std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
 		std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
+		std::cout << "then we increment once => " << "\n"<< std::endl;
 		test.incrementGrade();
 		std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
 		std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
-		int i = 160;
-		while(i > 1 )
-		{
-			test.incrementGrade();
-			if(i == 1)
-			{
-				std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
-				std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
-			}
-			i++;
-		}
+		std::cout << "then we increment once => " << "\n"<< std::endl;
+		test.incrementGrade();
+		std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
+		std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
+		std::cout << "then we decrement once => " << "\n"<< std::endl;
+		test.decrementGrade();
+		std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
+		std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
+		std::cout << "then we twice once => " << "\n"<< std::endl;
+		test.incrementGrade();
+		test.incrementGrade();
 		std::cout << "Current name is => " << test.getName() << "\n" << std::endl;
 		std::cout << "current grade is => " << test.getGrade() << "\n"<< std::endl;
 	}

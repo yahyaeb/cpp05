@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 12:29:43 by yel-bouk          #+#    #+#             */
-/*   Updated: 2025/09/04 16:43:51 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2025/09/06 15:13:56 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ class AForm
 			{
 				return "Form is not signed";
 			}
+	};
+	class AlreadySigned : public std::exception
+	{
+		public:
+			virtual const char* what() const throw()
+			{
+				return "Form already is signed";
+			}	
 	};
 
 	// Getters
